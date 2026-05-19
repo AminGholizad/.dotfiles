@@ -99,8 +99,10 @@ zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview 'eza --color=always --l
 alias ls='ls --color'
 alias l='ls -lah'
 alias els="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias md='mkdir -p'
 alias dotfiles="cd ${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles"
 alias q='exit'
+
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases" ]; then
   source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases"
 fi

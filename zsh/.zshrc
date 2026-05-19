@@ -65,6 +65,11 @@ zinit snippet OMZP::systemd
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
+## edit command via neovim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 ## --- Tool Initialization & Auto-Install ---
 install_tool "oh-my-posh" "oh-my-posh"
 eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}/ohmyposh/amin_catppuccin.toml")"

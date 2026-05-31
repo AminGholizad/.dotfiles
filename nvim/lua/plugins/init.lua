@@ -4,8 +4,6 @@ return {
         -- event = 'BufWritePre', -- uncomment for format on save
         opts = require "configs.conform",
     },
-
-    -- These are some examples, uncomment them if you want to see them work!
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -43,6 +41,18 @@ return {
                 dapui.close()
             end
         end
+    },
+    {
+      'MagicDuck/grug-far.nvim',
+      lazy = true,
+      cmd = "GrugFar",
+      config = function()
+        require('grug-far').setup({})
+      end,
+    },
+    {
+      "tpope/vim-fugitive",
+      cmd = "Git"
     },
     -- test new blink
     -- { import = "nvchad.blink.lazyspec" },

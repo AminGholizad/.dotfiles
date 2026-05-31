@@ -2,6 +2,9 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export EDITOR=nvim
 
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 # Android-specific logic isn't needed for these, but good to keep for Linux
 if [[ "$OSTYPE" != "linux-android"* ]]; then
     export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -41,7 +44,7 @@ install_tool() {
 }
 
 ## --- Zinit Setup ---
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -72,7 +75,7 @@ bindkey '^X^E' edit-command-line
 
 ## --- Tool Initialization & Auto-Install ---
 install_tool "oh-my-posh" "oh-my-posh"
-eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}/ohmyposh/amin_catppuccin.toml")"
+eval "$(oh-my-posh init zsh --config "$CONFIG_DIR/ohmyposh/amin_catppuccin.toml")"
 install_tool "fzf" "fzf"
 eval "$(fzf --zsh)"
 
@@ -105,11 +108,11 @@ alias ls='ls --color'
 alias l='ls -lah'
 alias els="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias md='mkdir -p'
-alias dotfiles="cd ${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles"
+alias dotfiles="cd $XDG_DATA_HOME/dotfiles"
 alias q='exit'
 
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases" ]; then
-  source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases"
+if [ -f "$CONFIG_DIR/zsh/aliases" ]; then
+  source "$CONFIG_DIR/zsh/aliases"
 fi
 
 ## --- Functions ---

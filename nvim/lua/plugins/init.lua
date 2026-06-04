@@ -15,32 +15,40 @@ return {
         lazy = false,
     },
     {
-        "mfussenegger/nvim-dap",
+      "Civitasv/cmake-tools.nvim",
+      -- lazy = false,
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {
+        cmake_build_directory = "build", 
+        cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" },
+      },
     },
     {
-        "jay-babu/mason-nvim-dap.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "mfussenegger/nvim-dap",
-        }
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
-            dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-        end
+      "mfussenegger/nvim-dap",
+      dependencies = {
+        -- Installs debuggers automatically via Mason
+        { "jay-babu/mason-nvim-dap.nvim", dependencies = "williamboman/mason.nvim" },
+        -- The IDE-like layout
+        { "rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio" },
+      },
+      config = function()
+        local dap = require("dap")
+        local dapui = require("dapui")
+
+        -- Initialize the UI
+        dapui.setup()
+
+        -- Automatically open/close the VS layout windows
+        dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+        dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+        dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
+      
+        -- Tell Mason-DAP to automatically hook up codelldb for C++
+        require("mason-nvim-dap").setup({
+          ensure_installed = { "codelldb" },
+          automatic_configuration = true,
+        })
+      end,
     },
     {
       'MagicDuck/grug-far.nvim',

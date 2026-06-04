@@ -5,9 +5,7 @@ vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers
 
-
-local lspconfig = require("lspconfig")
-lspconfig.clangd.setup {
+vim.lsp.config("clangd", {
   cmd = {
     "clangd",
     "--background-index",
@@ -17,5 +15,7 @@ lspconfig.clangd.setup {
     "--function-arg-placeholders",
     "--fallback-style=llvm",
   },
-}
+})
+
+vim.lsp.enable("clangd")
 

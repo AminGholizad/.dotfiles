@@ -46,6 +46,9 @@ map("n", "<leader>gR", function() gitsigns.reset_buffer() end, { desc = "Gitsign
 map("n", "<leader>gp", function() gitsigns.preview_hunk() end, { desc = "Gitsigns Preview hunk diff inline" })
 map("n", "<leader>gb", function() gitsigns.blame_line{full=true} end, { desc = "Gitsigns View full Git blame for line" })
 map("n", "<leader>gd", function() gitsigns.diffthis() end, { desc = "Gitsigns Open side-by-side Git diff split" })
+
+map("n","<leader>o", "<cmd>Outline<CR>", { desc = "toggle Code Outline Sidebar" })
+
 local grug = require("grug-far")
 map("n", "<leader>sr", function()
   grug.open({ transient = true })

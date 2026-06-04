@@ -62,6 +62,19 @@ return {
       "tpope/vim-fugitive",
       cmd = "Git"
     },
+    {
+      "hedyhli/outline.nvim",
+      cmd = { "Outline", "OutlineOpen" },
+      opts = {
+        outline_window = {
+          position = "right",
+          width = 30,
+        },
+        symbols = {
+          icon_source = "lsp", 
+        },
+      },
+    },
     -- test new blink
     -- { import = "nvchad.blink.lazyspec" },
 

@@ -110,6 +110,9 @@ alias els="eza --color=always --long --git --no-filesize --icons=always --no-tim
 alias md='mkdir -p'
 alias dotfiles="cd $XDG_DATA_HOME/dotfiles"
 alias q='exit'
+alias t='tmux'
+alias cls='clear'
+alias clc='clear'
 
 if [ -f "$CONFIG_DIR/zsh/aliases" ]; then
   source "$CONFIG_DIR/zsh/aliases"
@@ -122,4 +125,7 @@ function y() {
     IFS= read -r -d '' cwd < "$tmp"
     [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
     rm -f -- "$tmp"
+}
+unzip_to_folder() {
+    unzip "$1" -d "${1%.zip}"
 }

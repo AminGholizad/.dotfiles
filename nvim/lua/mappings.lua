@@ -43,7 +43,13 @@ map("n", "<leader>gS", function() require("gitsigns").stage_buffer() end, { desc
 map("n", "<leader>gR", function() require("gitsigns").reset_buffer() end, { desc = "Gitsigns Reset entire file" })
 map("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, { desc = "Gitsigns Preview hunk diff inline" })
 map("n", "<leader>gb", function() require("gitsigns").blame_line{full=true} end, { desc = "Gitsigns View full Git blame for line" })
-map("n", "<leader>gd", function() require("gitsigns").diffthis() end, { desc = "Gitsigns Open side-by-side Git diff split" })
+map("n", "<leader>gdd", function() require("gitsigns").diffthis() end, { desc = "Gitsigns Open side-by-side Git diff split" })
+
+-- Diffview bindings
+map("n", "<leader>gdo", "<cmd>DiffviewOpen<cr>", { desc = "Git Diffview Open" })
+map("n", "<leader>gdc", "<cmd>DiffviewClose<cr>", { desc = "Git Diffview Close" })
+map("n", "<leader>gdh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git File History" })
+
 
 map("n","<leader>o", "<cmd>Outline<CR>", { desc = "toggle Code Outline Sidebar" })
 

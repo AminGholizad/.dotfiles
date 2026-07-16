@@ -94,6 +94,11 @@ return {
         },
       },
     },
+    {
+      "sindrets/diffview.nvim",
+      cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+      config = true,
+    },
     -- test new blink
     -- { import = "nvchad.blink.lazyspec" },
 

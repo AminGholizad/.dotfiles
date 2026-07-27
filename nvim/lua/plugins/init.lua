@@ -99,6 +99,14 @@ return {
       cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
       config = true,
     },
+    {
+      "fatih/vim-go",
+      ft = {"go", "gomod"},
+      build = ":GoUpdateBinaries",
+      config = function()
+        vim.g.go_fmt_autosave = 1
+      end,
+    },
     -- test new blink
     -- { import = "nvchad.blink.lazyspec" },
 

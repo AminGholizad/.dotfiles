@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "pyright", "clangd"}
 vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers
@@ -16,6 +16,3 @@ vim.lsp.config("clangd", {
     "--fallback-style=llvm",
   },
 })
-
-vim.lsp.enable("clangd")
-

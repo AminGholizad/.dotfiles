@@ -19,7 +19,7 @@ return {
       ft = { "c", "cpp", "objc", "objcpp", "cuda" },
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {
-        cmake_build_directory = "build", 
+        cmake_build_directory = "build",
         cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" },
       },
       config = function(_, opts)
@@ -36,7 +36,7 @@ return {
         map("n", "<leader>cm", "<cmd>CMakeSelectBuildType<cr>", { desc = "CMake Select Build Type (Debug/Release)" })
         map("n", "<leader>co", "<cmd>CMakeOpenExecuter<cr>", { desc = "CMake Open console/output panel" })
         map("n", "<leader>cq", "<cmd>CMakeCloseExecuter<cr>", { desc = "CMake Close console/output panel" })
-        
+        --
         map("n", "<leader>fca", "<cmd>Telescope cmake_tools<cr>", { desc = "Telescope cmake project files" })
         map("n", "<leader>fcs", "<cmd>Telescope cmake_tools sources<cr>", { desc = "Telescope cmake project source files" })
         map("n", "<leader>fcs", "<cmd>Telescope cmake_tools cmake_files<cr>", { desc = "Telescope cmake project model files" })
@@ -62,7 +62,7 @@ return {
         dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
         dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
         dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
-      
+        --
         -- Tell Mason-DAP to automatically hook up codelldb for C++
         require("mason-nvim-dap").setup({
           ensure_installed = { "codelldb" },
@@ -90,7 +90,7 @@ return {
           width = 30,
         },
         symbols = {
-          icon_source = "lsp", 
+          icon_source = "lsp",
         },
       },
     },

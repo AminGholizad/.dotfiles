@@ -107,6 +107,25 @@ return {
         vim.g.go_fmt_autosave = 1
       end,
     },
+    {
+      "benomahony/uv.nvim",
+      ft = { "python" },
+      dependencies = {
+      --   "folke/snacks.nvim"
+      -- or
+        "nvim-telescope/telescope.nvim"
+      },
+      config = function ()
+        require('uv').setup({
+          keymaps = {
+            prefix = "<leader>u",
+          }
+        })
+      end,
+      opts = {
+        picker_integration = true,
+      },
+    },
     -- test new blink
     -- { import = "nvchad.blink.lazyspec" },
 

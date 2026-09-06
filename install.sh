@@ -56,7 +56,7 @@ fi
 if ! $IS_ANDROID; then
     brew install git zsh stow tmux nvim
 else
-    pkg install zsh stow tmux nvim
+    pkg install zsh stow tmux neovim
 fi
 # 6. Symbolic Linking
 echo -e "${BLUE}Linking configuration files...${NC}"
